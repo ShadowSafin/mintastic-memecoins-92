@@ -1,5 +1,6 @@
 
 import { Buffer } from 'buffer';
+import { EventEmitter } from './polyfills/events';
 
 // Fix for Buffer not being available in browser
 window.Buffer = window.Buffer || Buffer;
@@ -20,6 +21,13 @@ if (!(window as any).process) {
     off: () => {},
     emit: () => {},
     browser: true
+  };
+}
+
+// Add events polyfill
+if (!(window as any).events) {
+  (window as any).events = {
+    EventEmitter
   };
 }
 

@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => ({
       include: [
         'node_modules/@solana/**',
         'node_modules/@metaplex/**',
+        'node_modules/@irys/**',
         'node_modules/buffer/',
         'node_modules/stream/',
         'node_modules/events/'
@@ -31,7 +33,7 @@ export default defineConfig(({ mode }) => ({
       "http": "stream-http",
       "https": "https-browserify",
       "url": "url",
-      "events": "events",
+      "events": path.resolve(__dirname, "./src/polyfills/events.ts"),
       "util": "util",
       "crypto": "crypto-browserify",
       "zlib": "browserify-zlib",
